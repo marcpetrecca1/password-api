@@ -39,7 +39,7 @@ app_version: 0.8.5-0
     
 *   password: which is the current account password
     
-*   new password: password validation is applied, Not recently used policy should apply
+*   new password: password validation & Not recently used policy should apply
 
 <br/>
 
