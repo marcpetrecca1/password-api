@@ -23,7 +23,7 @@ Start the development server
 
 Send POST request to localhost:3000/api/createUser to make sure the API is running
 
-Requirments 
+**Requirments **
 
 Validation
 
