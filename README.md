@@ -23,33 +23,33 @@ Start the development server
 
 Send POST request to localhost:3000/api/createUser to make sure the API is running
 
-**Requirments **
+## Requirements
 
-Validation
+**Validation**
 
 at least 8 characters with at least 1 Upper case, 1 lower case, 1 special character such as "@#$%@!" and 1 numeric character
 
-Policy
+**Policy**
 
 Expire passwords (90 days): password is only valid for 90 days, after it expires the user should change his password.
 
 Not recently used: This policy saves the history of previous passwords. The number of old passwords stored is 3. when the user changes his password he cannot use any of the saved passwords
 
-Create User Endpoint
+**Create User Endpoint**
 
 The request method is POST
 
-Email: should be a valid email & unique
+**Email:** should be a valid email & unique
 
 should follow the validation policy
 
-Login Endpoint
+**Login Endpoint**
 
 This endpoint should act as a login endpoint where email & password are passed
 
 You should apply expire password policy to this endpoint: if the policy condition is true return an error message
 
-Change Password Endpoint
+**Change Password Endpoint**
 
 Email: email should exist on the database
 
