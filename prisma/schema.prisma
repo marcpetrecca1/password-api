@@ -9,10 +9,13 @@ datasource db {
   referentialIntegrity = "prisma"
 }
 
-
 model users {
-  id                Int              @id @default(autoincrement()) @db.UnsignedInt
-  email             String?          @db.VarChar(255)
-  password          String?          @db.VarChar(255)
-  
+  id       String @id @default(uuid())
+  email    String @unique @db.VarChar(255)
+  password String @db.VarChar(255)
 }
+
+// model password {
+//   id     String @id @default(uuid())
+//   userId
+// }
