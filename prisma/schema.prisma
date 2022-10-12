@@ -10,12 +10,20 @@ datasource db {
 }
 
 model users {
-  id       String @id @default(uuid())
-  email    String @unique @db.VarChar(255)
-  password String @db.VarChar(255)
+  id        Int        @id @default(autoincrement())
+  email     String     @unique @db.VarChar(255)
+  passwords password[] @relation("User Email")
+
+  @@index([email])
 }
 
-// model password {
-//   id     String @id @default(uuid())
-//   userId
-// }
+model password {
+  id         Int      @id @default(autoincrement())
+  user       users    @relation("User Email", fields: [usersEmail], references: [email])
+  usersEmail String   @unique
+  password   String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+// I know we use bcrypt for encrption but not using it for this app
