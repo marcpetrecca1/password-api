@@ -1,4 +1,5 @@
 import prisma from '@/lib/prisma';
+import { Prisma } from '@prisma/client';
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -7,12 +8,17 @@ export default async function handler(req, res) {
     });
     return;
   }
+
   const body = req.body;
 
   try {
-    // const entries = await prisma.password.findMany();
+    // const entries = await prisma.users.findMany();
     // await prisma.password.deleteMany();
     // await prisma.users.deleteMany();
+
+    const futureDate = new Date();
+    futureDate.setDate(futureDate.getDate() + 90);
+
     const passwordValidation = validatePassword(body.password);
     if (typeof passwordValidation === 'boolean') {
       const entries = await prisma.users.create({
@@ -21,6 +27,7 @@ export default async function handler(req, res) {
           passwords: {
             create: {
               password: body.password,
+              expiresOn: futureDate.toISOString(),
             },
           },
         },
@@ -35,6 +42,7 @@ export default async function handler(req, res) {
         });
       }
     }
+    res.status(200).json({ message: 'Created', success: true });
   } catch (error) {
     console.error('Request error', error);
     res
