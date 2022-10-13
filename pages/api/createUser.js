@@ -1,7 +1,10 @@
 import prisma from '@/lib/prisma';
 import { Prisma } from '@prisma/client';
+import { useHelpers } from '../../hooks/helper';
 
 export default async function handler(req, res) {
+  const { validatePassword } = useHelpers();
+
   if (req.method !== 'POST') {
     res.status(405).json({
       message: 'Method Not Allowed',
@@ -48,36 +51,5 @@ export default async function handler(req, res) {
     res
       .status(500)
       .json({ error: 'This email is already in use', success: false });
-  }
-}
-
-function validatePassword(password) {
-  const errorStorage = {};
-  const capitalLetters = /[A-Z]/g;
-  const specialCharacters = /[\W|_]/g;
-  const numbers = /[\d]/g;
-  const lowercaseLetters = /[a-z]/g;
-
-  if (password.length < 8) {
-    errorStorage.length = 'Password must have atleast 8 characters';
-  }
-  if (password.match(capitalLetters) === null) {
-    errorStorage.capitalLetters = 'You must have atleast 1 capital letter';
-  }
-  if (password.match(specialCharacters) === null) {
-    errorStorage.specialCharacters =
-      'You must have atleast one special character';
-  }
-  if (password.match(numbers) === null) {
-    errorStorage.numbers = 'You must have atleast one number';
-  }
-  if (password.match(lowercaseLetters) === null) {
-    errorStorage.lowerCase = 'You must have atleast one lowercase number';
-  }
-
-  if (Object.keys(errorStorage).length === 0) {
-    return true;
-  } else {
-    return errorStorage;
   }
 }
