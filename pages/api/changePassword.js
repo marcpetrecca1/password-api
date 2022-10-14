@@ -31,7 +31,7 @@ export default async function handler(req, res) {
       });
     }
 
-    // check if password alphanumerically valid
+    // check if password is alphanumerically valid
 
     const isValid = validatePassword(password);
 

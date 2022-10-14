@@ -2,7 +2,7 @@ import prisma from '@/lib/prisma';
 import useHelpers from '../../hooks/helper';
 
 export default async function handler(req, res) {
-  const { validatePassword, createExpiration, checkExpire } = useHelpers();
+  const { validatePassword, createExpiration } = useHelpers();
 
   if (req.method !== 'POST') {
     res.status(405).json({
@@ -23,7 +23,6 @@ export default async function handler(req, res) {
     //     passwords: true,
     //   },
     // });
-
     // await prisma.password.deleteMany();
     // await prisma.users.deleteMany();
     const passwordValidation = validatePassword(password);
@@ -50,7 +49,7 @@ export default async function handler(req, res) {
         });
       }
     }
-    // return res.status(200).json({ message: 'done', success: true });
+    // return res.status(200).json({ message: passwords, success: true });
   } catch (error) {
     console.error('Request error', error);
     res
