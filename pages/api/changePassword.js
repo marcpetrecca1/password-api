@@ -2,14 +2,14 @@ import prisma from '@/lib/prisma';
 import useHelpers from '../../hooks/helper';
 
 export default async function handler(req, res) {
-  const { validatePassword, createExpiration } = useHelpers();
-
   if (req.method !== 'POST') {
     res.status(405).json({
       message: 'Method Not Allowed',
     });
     return;
   }
+
+  const { validatePassword, createExpiration } = useHelpers();
 
   const { email, password } = req.body;
 
