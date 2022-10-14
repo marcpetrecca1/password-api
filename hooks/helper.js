@@ -32,7 +32,34 @@ export default function useHelpers() {
     }
   }
 
+  function createExpiration() {
+    const futureDate = new Date();
+    futureDate.setDate(futureDate.getDate() + 90);
+    return futureDate;
+  }
+
+  function isExpired(expiration) {
+    // let currentDate = new Date().getTime();
+    // console.log(currentDate);
+
+    // const futureDate = new Date();
+    // futureDate.setDate(futureDate.getDate() + 90);
+    // futureDate.getTime();
+
+    // let Difference_in_time = futureDate - currentDate;
+
+    // let Difference_In_Days = Difference_in_time / (1000 * 3600 * 24);
+    let currentDate = new Date().getTime();
+    let expireDate = new Date(expiration).getTime();
+    if (currentDate > expireDate) {
+      return true;
+    }
+    return false;
+  }
+
   return {
     validatePassword,
+    createExpiration,
+    isExpired,
   };
 }

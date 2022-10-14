@@ -1,9 +1,8 @@
 import prisma from '@/lib/prisma';
-import { Prisma } from '@prisma/client';
-import { useHelpers } from '../../hooks/helper';
+import useHelpers from '../../hooks/helper';
 
 export default async function handler(req, res) {
-  const { validatePassword } = useHelpers();
+  const { validatePassword, createExpiration, checkExpire } = useHelpers();
 
   if (req.method !== 'POST') {
     res.status(405).json({
@@ -12,25 +11,31 @@ export default async function handler(req, res) {
     return;
   }
 
-  const body = req.body;
+  const { email, password } = req.body;
 
   try {
-    // const entries = await prisma.users.findMany();
+    // console.log(checkExpire());
+    // const passwords = await prisma.users.findUnique({
+    //   where: {
+    //     email: email,
+    //   },
+    //   include: {
+    //     passwords: true,
+    //   },
+    // });
+
     // await prisma.password.deleteMany();
     // await prisma.users.deleteMany();
-
-    const futureDate = new Date();
-    futureDate.setDate(futureDate.getDate() + 90);
-
-    const passwordValidation = validatePassword(body.password);
+    const passwordValidation = validatePassword(password);
     if (typeof passwordValidation === 'boolean') {
+      const expiration = createExpiration();
       const entries = await prisma.users.create({
         data: {
-          email: body.email,
+          email: email,
           passwords: {
             create: {
-              password: body.password,
-              expiresOn: futureDate.toISOString(),
+              password: password,
+              expiresOn: expiration.toISOString(),
             },
           },
         },
@@ -45,7 +50,7 @@ export default async function handler(req, res) {
         });
       }
     }
-    res.status(200).json({ message: 'Created', success: true });
+    // return res.status(200).json({ message: 'done', success: true });
   } catch (error) {
     console.error('Request error', error);
     res
