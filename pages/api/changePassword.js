@@ -63,7 +63,6 @@ export default async function handler(req, res) {
       return res.status(400).json({
         error: 'Cannot use any previous passwords',
         success: false,
-        body: present,
       });
     }
     const passwordList = passwords.passwords;
