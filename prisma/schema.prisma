@@ -20,8 +20,8 @@ model users {
 
 model password {
   id             Int      @id @default(autoincrement())
-  user           users?   @relation("User Email", fields: [usersEmail], references: [email], onDelete: Cascade)
-  usersEmail     String?
+  user           users    @relation("User Email", fields: [usersEmail], references: [email], onDelete: Cascade)
+  usersEmail     String
   password       String
   expiresOn      DateTime
   activePassword Boolean  @default(true)

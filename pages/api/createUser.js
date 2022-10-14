@@ -49,7 +49,7 @@ export default async function handler(req, res) {
         });
       }
     }
-    // return res.status(200).json({ message: 'done', success: true });
+    // return res.status(200).json({ message: passwords, success: true });
   } catch (error) {
     console.error('Request error', error);
     res
