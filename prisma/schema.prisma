@@ -29,5 +29,3 @@ model password {
   @@index([id])
   @@fulltext([password])
 }
-
-// I know we use bcrypt for encrption but not using it for this app
