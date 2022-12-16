@@ -14,17 +14,6 @@ export default async function handler(req, res) {
   const { email, password } = req.body;
 
   try {
-    // console.log(checkExpire());
-    // const passwords = await prisma.users.findUnique({
-    //   where: {
-    //     email: email,
-    //   },
-    //   include: {
-    //     passwords: true,
-    //   },
-    // });
-    // await prisma.password.deleteMany();
-    // await prisma.users.deleteMany();
     const passwordValidation = validatePassword(password);
     if (typeof passwordValidation === 'boolean') {
       const expiration = createExpiration();
@@ -49,7 +38,6 @@ export default async function handler(req, res) {
         });
       }
     }
-    // return res.status(200).json({ message: passwords, success: true });
   } catch (error) {
     console.error('Request error', error);
     res
