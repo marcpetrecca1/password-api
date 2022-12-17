@@ -5,22 +5,15 @@ To install & run the app on your local environment run the following:
     npm install
     npm run dev
 
-Send POST request to localhost:3000/api/createUser to make sure the API is running <br>
-Make sure to copy the content of .env.example to .env file & fill the database URL value
-
 Installation
 
 Clone the repository locally:
 
-git clone https://github.com/Bask-Health/password-policy.git
+git clone https://github.com/marcpetrecca1/password-api.git
 
-Install NPM packages npm instal
-
-Copy the content of .env.example to .env file & fill the database URL value
+Install NPM packages npm install
 
 Start the development server
-
-Send POST request to localhost:3000/api/createUser to make sure the API is running
 
 ## Requirements
 
