@@ -39,7 +39,6 @@ Not recently used: This policy saves the history of previous passwords. The numb
 The request method is POST
 
 ![Screenshot](createUser.png)
-
 ![Screenshot](helper1.png)
 
 **Email:** should be a valid email & unique
