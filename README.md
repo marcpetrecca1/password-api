@@ -17,6 +17,10 @@ Start the development server
 
 ## Requirements
 
+**Schema**
+
+![Screenshot](models.png)
+
 **Validation**
 
 at least 8 characters with at least 1 Upper case, 1 lower case, 1 special character such as "@#$%@!" and 1 numeric character
