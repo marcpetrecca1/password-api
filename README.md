@@ -40,6 +40,8 @@ The request method is POST
 
 ![Screenshot](createUser.png)
 
+![Screenshot](helper1.png)
+
 **Email:** should be a valid email & unique
 
 should follow the validation policy
