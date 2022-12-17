@@ -32,6 +32,7 @@ Not recently used: This policy saves the history of previous passwords. The numb
 The request method is POST
 
 ![Screenshot](createUser.png)
+
 ![Screenshot](helper1.png)
 
 **Email:** should be a valid email & unique
@@ -39,6 +40,7 @@ The request method is POST
 should follow the validation policy
 
 ![Screenshot](helper1.png)
+
 ![Screenshot](helper2.png)
 
 **Login Endpoint**
@@ -60,7 +62,11 @@ password: which is the current account password
 new password: password validation & Not recently used policy should apply
 
 ![Screenshot](changePass1.png)
+
 ![Screenshot](changePass2.png)
+
 ![Screenshot](changePass3.png)
+
 ![Screenshot](changePass4.png)
+
 ![Screenshot](changePass5.png)
