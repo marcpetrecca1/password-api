@@ -45,11 +45,18 @@ The request method is POST
 
 should follow the validation policy
 
+![Screenshot](helper1.png)
+![Screenshot](helper2.png)
+
 **Login Endpoint**
 
 This endpoint should act as a login endpoint where email & password are passed
 
+![Screenshot](login1.png)
+
 You should apply expire password policy to this endpoint: if the policy condition is true return an error message
+
+![Screenshot](login2.png)
 
 **Change Password Endpoint**
 
@@ -58,3 +65,9 @@ Email: email should exist on the database
 password: which is the current account password
 
 new password: password validation & Not recently used policy should apply
+
+![Screenshot](changePass1.png)
+![Screenshot](changePass2.png)
+![Screenshot](changePass3.png)
+![Screenshot](changePass4.png)
+![Screenshot](changePass5.png)
